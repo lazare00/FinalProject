@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ work.name }}
+{% endblock %}
+
+{% block content %}
+<img src="/static/{{ work.img }}" class="card-img-top"
+     style="max-width: 50%; height: auto; margin-left: 30%; border-radius: 0px;">
+<div class="d-flex view-image">
+    <div class="card" style="width: 50%; height: auto%;  margin-left: 30%;">
+        <div class="card-body">
+            <i><h3 class="card-title">Card title</h3></i>
+            <p class="card-text">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                     class="bi bi-person-circle align-middle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                    <path fill-rule="evenodd"
+                          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                </svg>
+                Name Surname
+            </p>
+            <hr>
+            <div class="comment-section">
+            <h6 class="card-subtitle mb-2 text-muted"></h6>
+
+            {% for comment, user in comments %}
+                <p>{{ user.username }}: {{ comment.text }}</p>
+            {% endfor %}
+
+            <form method="POST" action="{{ url_for('view_image', work_id=work.id) }}">
+                {{ form.hidden_tag() }}
+
+                <div class="form-group">
+                    {{ form.text.label }}
+                    {{ form.text(class="form-control", placeholder="Write a comment") }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-primary mt-2") }}
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+
+
+

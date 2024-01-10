@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+    About
+{% endblock %}
+
+{% block content %}
+    <div class="container text-center my-8" style="margin-left: 18%;">
+        <h1 class="display-4">About Us</h1>
+        <p class="h4">Welcome to art website!</p>
+
+        <div class="row mt-5">
+            <div class="col-md-4 mx-10">
+                <h2 class="h4">Our Mission</h2>
+                <p>To make it easier for artists to show their work to the world</p>
+            </div>
+
+            <div class="col-md-4 mx-10">
+                <h2 class="h4">How It Works</h2>
+                <p>You can share your artwork and others artwork and make comment about that</p>
+            </div>
+
+            <div class="col-md-4 mx-10">
+                <h2 class="h4">How To Start</h2>
+                <p>You only need to sigin up!</p>
+            </div>
+        </div>
+       <a href="https://www.tbceducation.ge/">
+        <img src="{{ url_for('static', filename='tbc-logo.png') }}" alt="Logo" style="width: 100px; height: auto;">
+    </a>
+    </div>
+{% endblock %}
+
